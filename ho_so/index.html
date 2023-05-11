@@ -1,0 +1,345 @@
+<!-- điểu tuyệt vời là khi thay đổi thuộc tính display từ container cha, các item con của nó có thuộc tính giữ nguyên. do đó khi chuyển trang bằng js 
+thi chỉ cần thay đổi lại thuộc tính display của cha về flex là trang lại y nguyên như cũ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+
+
+                axisY: {
+                    title: "TC tích lũy",
+                    titleFontColor: "#4F81BC",
+                    lineColor: "#4F81BC",
+                    tickColor: "#4F81BC",
+                    labelFontColor: "#4F81BC",
+                    titleFontSize: 12,
+                },
+                axisY2: {
+                    title: "Điểm",
+                    titleFontColor: "#C0504E",
+                    lineColor: "#C0504E",
+                    tickColor: "#C0504E",
+                    labelFontColor: "#C0504E",
+                    titleFontSize: 12,
+                    opposite: true, // Hiển thị trên trục Y bên phải
+                    minimum: 0,
+                    maximum: 4,
+                },
+                data: [{
+                    type: "column",
+                    name: "Dữ liệu cột",
+                    axisYType: "primary",
+                    color: "#4F81BC",
+                    dataPoints: [
+                        { label: "năm thứ nhất ", y: 13 },
+                        { label: "năm thứ nhất", y: 28 },
+                        { label: "năm thứ hai ", y: 43 },
+                        { label: "năm thứ hai", y: 61 },
+                    ]
+                },
+                {
+                    type: "line",
+                    name: "Dữ liệu đường",
+                    axisYType: "secondary",
+                    color: "#C0504E",
+                    markerSize: 7,
+                    lineThickness: 3,
+                    dataPoints: [
+                        { label: "năm thứ nhất", y: 3.69 },
+                        { label: "năm thứ nhất", y: 3.86 },
+                        { label: "năm thứ hai", y: 3.89 },
+                        { label: "năm thứ hai", y: 3.91 },
+                    ]
+                }]
+            });
+            chart.render();
+
+
+            var chart2 = new CanvasJS.Chart("chartContainer2", {
+
+                animationEnabled: true,
+                title: {
+                },
+                data: [{
+                    type: "line",
+                    indexLabelFontSize: 16,
+                    dataPoints: [
+                        { label: "20201", y: 39 },
+                        { label: "20202", y: 90 },
+                        { label: "20211", y: 87 },
+                        { label: "20212", y: 35 },
+                    ]
+                }]
+            });
+            chart.render();
+            chart2.render();
+        }
+
+        chuyenQuanLi = () => {
+            let quanLiInstance = document.querySelector(".student-mark-02")
+            quanLiInstance.style.display = "block";
+            quanLiInstance.ariaHidden = "false";
+
+            let trangThaiInstance = document.querySelector(".student-mark")
+            trangThaiInstance.style.display = "none";
+            trangThaiInstance.ariaHidden = "true";
+        }
+
+        chuyenTrangThai = () => {
+            let quanLiInstance = document.querySelector(".student-mark-02")
+            quanLiInstance.style.display = "none";
+            quanLiInstance.ariaHidden = "true";
+
+            let trangThaiInstance = document.querySelector(".student-mark")
+            trangThaiInstance.style.display = "block";
+            trangThaiInstance.ariaHidden = "false";
+        }
+
+        changeToContact = () => {
+            let inf = document.querySelector(".information");
+            let contact = document.querySelector(".contact");
+            let decision = document.querySelector(".decision");
+            inf.ariaHidden ="true";
+            contact.style.display = "block";
+            inf.style.display = "none";
+            decision.style.display = "none";
+        }
+
+        changeToDecision = () => {
+            let inf = document.querySelector(".information");
+            let contact = document.querySelector(".contact");
+            let decision = document.querySelector(".decision");
+
+            contact.style.display = "none";
+            inf.style.display = "none";
+            decision.style.display = "block";
+        }
+
+        changeToInformation = () => {
+            let inf = document.querySelector(".information");
+            let contact = document.querySelector(".contact");
+            let decision = document.querySelector(".decision");
+
+            contact.style.display = "none";
+            inf.style.display = "flex";
+            inf.style.flexDirection = "column";
+            decision.style.display = "none";
+        }
+        // size của class html con có thể không cố định do mặc định
+
+        khenThuong = () => {
+            let inf = document.querySelector(".information");
+            let contact = document.querySelector(".contact");
+            let decision = document.querySelector(".decision");
+
+            contact.style.display = "none";
+            inf.style.display = "none";
+            decision.style.display = "none";
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="grid">
+            <div class="information-section">
+                <div class="left-col">
+                    <div class="above">
+                        <img id="background"
+                            src="https://dean2020.edu.vn/wp-content/uploads/2019/06/hinh-6.png?fbclid=IwAR0lglhr6oJ5eQSRpGiweKiOS5ufU-k5ZFFVUu3MSm247pY_DVaq9Ef6m58">
+                        <img id="student-image"
+                            src="https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg">
+                        <div class="student-contact-information">
+                            <div class="line">MS: 20204608</div>
+                            <div class="line">Họ tên: Lê Minh Thiện</div>
+                            <div class="line">Lớp: Khoa học máy tính 05-K65</div>
+                            <div class="line">Email: thien.lm204608@sis.hust.edu.vn</div>
+                        </div>
+                    </div>
+                    <div class="below">
+                        <div class="switch-bar">
+                            <div class="trang-thai" onclick=""><button onclick="chuyenTrangThai()">trạng thái</button>
+                            </div>
+                            <div class="quan-li"><button onclick="chuyenQuanLi()">quản lý</button></div>
+                        </div>
+                        <div class="student-mark">
+                            <div class="line">Trạng thái học tập: Học</div>
+                            <div class="line">CPA: 3.92</div>
+                            <div class="line">Nợ: 0 TC</div>
+                            <div class="line">Tích lũy: 61 TC</div>
+                            <div class="line">Mức cảnh báo: M0</div>
+                            <div class="line">Trình độ: 2</div>
+                        </div>
+                        <div class="student-mark-02" style="display: none;" aria-hidden="true">
+                            <div class="line"><i class="fa fa-car"></i> Cán bộ quản lý lớp: lam.doba@hust.edu.vn</div>
+                            <div class="line"><i class="fa fa-file"></i> Viện: Trường Công nghệ Thông tin và Truyền thôn
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="right-col">
+                    <ul class="heading">
+                        <li><button class="heading-btn" id="inf" onclick="changeToInformation()">Lý lịch</button></li>
+                        <li><button class="heading-btn" id="decision" onclick="changeToDecision()">Quyết định</button></li>
+                        <li><button class="heading-btn" id="inf" onclick="khenThuong()">Khen thưởng</button></li>
+                        <li><button class="heading-btn" id="contact" onclick="changeToContact()">Liên Hệ</button></li>
+                    </ul>
+                    <div class="information">
+                        <div class="personal-information">
+                            <br>
+                            <br>
+                            <p><strong>Thông tin cá nhân</strong></p>
+                            <br>
+                            <br>
+                            <div class="inf-box">
+                                <div class="col">
+                                    <p>Ngày sinh: 07/09/2002</p>
+                                    <p>Số CMTND: 001333543224</p>
+                                    <p>Dân tộc: KINH</p>
+                                    <p>Ngày vào Đoàn:</p>
+                                </div>
+                                <div class="col">
+                                    <p>Nơi sinh: HÀ NỘI</p>
+                                    <p>Tôn giáo: KHÔNG</p>
+                                    <p>Ngày vào Đảng:</p>
+                                </div>
+                                <div class="col">
+                                    <p>Giới tính: Nam</p>
+                                    <p>Ngày cấp:</p>
+                                    <p>Chi đoàn:</p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="sub-inf">
+                                <p>Đối tượng chính sách:</p>
+                                <p>Số thẻ bảo hiểm: 0125131572</p>
+                                <p>Địa chỉ thường trú: XÃ XUÂN DƯƠNG, HUYỆN THANH OAI, THÀNH PHỐ HÀ NỘI</p>
+                                <p>Nơi ở hiện tại: Thành phố Hà Nội</p>
+                            </div>
+
+                        </div>
+                        <br>
+                        <br>
+                        <div class="personal-information">
+                            <p><strong>Thông tin gia đinh</strong></p>
+                            <div class="parent-inf">
+                                <strong>Họ và tên cha: LÊ VĂN PHÚC</strong>
+                                <br>
+                                <br>
+                                <div class="inf-box">
+                                    <div class="col">
+                                        <p>Dân tộc: KINH</p>
+                                        <p>Nơi làm việc:</p>
+                                        <p>Địa chỉ thường trú:</p>
+                                        <p>Liên hệ: 0978323543</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>Năm sinh: 1972</p>
+                                        <p>Tôn giáo:</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>Quốc tịch: KINH</p>
+                                        <p>Nghề nghiệp: NÔNG DÂN</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="parent-inf">
+                                <strong>Họ và tên mẹ: Lê Thị Thu</strong>
+                                <br>
+                                <br>
+                                <div class="inf-box">
+                                    <div class="col">
+                                        <p>Dân tộc: KINH</p>
+                                        <p>Nơi làm việc:</p>
+                                        <p>Địa chỉ thường trú:</p>
+                                        <p>Liên hệ: 0348534939</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>Năm sinh: 1972</p>
+                                        <p>Tôn giáo:</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>Quốc tịch: KINH</p>
+                                        <p>Nghề nghiệp: NÔNG DÂN</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <p>Địa chỉ thường trú: XÃ XUÂN DƯƠNG, HUYỆN THANH OAI, THÀNH PHỐ HÀ NỘI</p>
+                            <div class="other-member-inf">
+                                <p><strong>Thông tin người thân khác:</strong></p>
+                                <br>
+                                <p style="white-space: pre-wrap;"><strong>Thuộc hộ:</strong>"khu 2 hoàng cương canh ba phú thọ". <strong>Số sổ:</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="decision" style="display: none;" aria-hidden="true">
+                        <div class="inf">
+                            <p>Quyết định số: nhập học 2020
+                                <br>
+                                Thời gian thực hiện: 10.10.2020
+                                <br>
+                                Trạng thái: Đã thực hiện lớp,CTĐT
+                            </p>
+                            <p>
+                                Quyết định số: Chuyển từ KCNTT sang TCNTT
+                                <br>
+                                Thời gian thực hiện: 20.04.2022
+                                <br>
+                                Trạng thái: Đã thực hiện CTĐT
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="achivement" style="display: none;" aria-hidden="true">
+
+                    </div>
+                    <div class="contact" style="display: none;" aria-hidden="true">
+                        <div class="inf">
+                            <p>Số điện thoại: 01647447911</p>
+                            <p>SĐT cha: 0978205873 (LÊ VĂN PHÚC)</p>
+                            <p>Email:thien.lm204608@sis.hust.edu.vn</p>
+                            <p>Nơi ở hiện tại: X. Xuân Dương Hà Nội Việt Nam</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="graph-container">
+            <div class="graph-section">
+                <div class="above-graph">
+                    <h4><strong>Biểu đồ học tập</strong></h4>
+                    <div id="chartContainer" style="height: 300px; width: 40%;"></div>
+                    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                </div>
+                <br>
+                <br>
+                <div class="below-graph">
+                    <h4><strong>Biểu đồ rèn luyện</strong></h4>
+                    <div id="chartContainer2" style="height: 300px; width: 40%;"></div>
+                    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>

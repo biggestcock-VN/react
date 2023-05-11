@@ -1,0 +1,49 @@
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+#title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tribute-infor {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.line {
+    padding: 10px;
+}
+
+#img-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    background-color: white;
+}
+
+#image-holder{
+        max-width:100%;
+        height: auto;
+        /* text-align: center; */
+}
+
+img#image {
+    max-width:100%;
+    display: block;
+    position: relative;
+    margin: auto;
+    width: 80%;
+    height: auto;
+    background-color: aqua;
+}
